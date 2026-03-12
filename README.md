@@ -52,6 +52,7 @@ The entire workflow is driven by a single JSON configuration file. Keys preceded
 Here is a full example configuration:
 
 JSON
+
 {
     "work_dir": "./",
 
@@ -167,4 +168,5 @@ You do not have to run the entire pipeline from start to finish. You can easily 
 
 4. Notice for the Submission Step
    At present, the submission step only supports CP2K calculation with input template in a specific format. See template.inp for details.
+
 
