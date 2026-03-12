@@ -1,0 +1,2 @@
+[console_scripts]
+rgps = rgps.cli.main:main

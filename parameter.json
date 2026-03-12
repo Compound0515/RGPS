@@ -1,0 +1,95 @@
+{
+    "work_dir": "./",
+
+    "generation": {
+        "job_name": "generation",
+        "output_filename": "gen.xyz",
+        "numbers": 32,
+        "bulk": {
+            "O": 16,
+            "Ti": 8
+        },
+        "_slab": {
+            "Zn": [12, 24],
+            "Pd": 12
+        },
+        "_cluster": {
+            "Pt": 13
+        },
+        "_adsorption": {
+            "adsorbent": {
+                "Au": 32
+            },
+            "adsorbate": {
+                "C": 1, 
+                "O": 1
+            }
+        },
+        "tolerance_d": 1.0,
+        "vacuum": 0.0,
+        "max_attempts": 1000,
+        "nproc_total": 16
+    },
+
+    "perturbation": {
+        "job_name": "perturbation",
+        "_input_path": "./generation",
+        "_input_filename": "structure.xyz",
+        "output_filename": "perturb.xyz",
+        "numbers": 16,
+        "perturb_style": "random",
+        "_perturb_style": "eos",
+        "perturb_cell": true,
+        "perturb_ratio": 0.05,
+        "_eos_ratio": 0.1,
+        "seed": 42,
+        "nproc_total": 16
+    },
+
+    "optimization": {
+        "job_name": "optimization",
+        "_input_path": "./perturbation",
+        "_input_filename": "perturb.xyz",
+        "output_filename": "opt.xyz",
+        "model_type": "mace",
+        "_model_type": "dp",
+        "_model_type": "nep",
+        "model_path": "./mace-omat-0-small.model",
+        "steps": 200,
+        "opt_style": "var_cell",
+        "_opt_style": "fix_cell",
+        "method": "bfgs",
+        "_method": "cg",
+        "_method": "newton",
+        "energy_threshold": 1E-5,
+        "forces_threshold": 0.05,
+        "nproc_total": 16
+    },
+
+    "selection": {
+        "job_name": "selection",
+        "_input_path": "./optimization",
+        "_input_filename": "opt.xyz",
+        "output_filename": "select.xyz",
+        "numbers": 32,
+        "soap": {
+            "r_cut": 6.0,
+            "n_max": 8,
+            "l_max": 6
+        },
+        "max_force_threshold": 50.0,
+        "nproc_total": 16
+    },
+
+    "submission": {
+        "job_name": "cp2k_calculation",
+        "_input_path": "./selection",
+        "template_path": "./template.inp",
+        "modified_filename": "input.inp",
+        "struct_filename": "select.xyz",
+        "kspacing": 0.2,
+        "nproc_single": 4,
+        "nproc_total": 16,
+        "command": "mpirun -np {nproc_single} cp2k.popt -i {modified_name} -o cp2k.out"
+    }
+}

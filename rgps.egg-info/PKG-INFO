@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: rgps
+Version: 0.1.0
+Summary: Random Generation, Perturbation, Selection, and Submission Workflow
+Requires-Dist: numpy
+Requires-Dist: ase
+Requires-Dist: tqdm
+Requires-Dist: scipy
+Requires-Dist: dscribe
+Requires-Dist: matplotlib
+Requires-Dist: scikit-learn

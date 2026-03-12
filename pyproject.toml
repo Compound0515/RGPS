@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rgps"
+version = "0.1.0"
+description = "Random Generation, Perturbation, Selection, and Submission Workflow"
+dependencies = [
+    "numpy",
+    "ase",
+    "tqdm",
+    "scipy",
+    "dscribe",
+    "matplotlib",
+    "scikit-learn"
+]
+
+[project.scripts]
+rgps = "rgps.cli.main:main"
