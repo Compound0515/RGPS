@@ -24,7 +24,7 @@ Before running the tool, you need to set up a Python virtual environment and ins
    pip install -e .
    ```
 
-4. If you need other modules such as les for *MACELES* type model, you can install the module by youself.
+4. If you need other modules such as mace-torch and les for *MACELES* type model, you can install the module by youself.
 
 🚀 Workflow Overview
 The tool is divided into five sequential subcommands, representing each step in the pipeline. Each step requires a JSON configuration file to run.
@@ -167,3 +167,4 @@ You do not have to run the entire pipeline from start to finish. You can easily 
 
 4. Notice for the Submission Step
    At present, the submission step only supports CP2K calculation with input template in a specific format. See template.inp for details.
+
