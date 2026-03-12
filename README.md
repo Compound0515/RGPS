@@ -2,7 +2,7 @@
 
 The RGPS Workflow Tool is a command-line interface designed to automate the pipeline for generating, perturbing, optimizing, selecting, and submitting atomic structures for calculation.
 
-📦 Installation & Setup\n
+📦 Installation & Setup\
 Before running the tool, you need to set up a Python virtual environment and install the required dependencies.
 
 1. Open your terminal and navigate to the project directory, then run:
@@ -26,7 +26,7 @@ Before running the tool, you need to set up a Python virtual environment and ins
 
 4. If you need other modules such as mace-torch and les for *MACELES* type model, you can install the module by youself.
 
-🚀 Workflow Overview\n
+🚀 Workflow Overview\
 The tool is divided into five sequential subcommands, representing each step in the pipeline. Each step requires a JSON configuration file to run.
 
 The default workflow moves data through the following stages:
@@ -37,7 +37,7 @@ The default workflow moves data through the following stages:
 4. Selection (select): Filters structures based on a maximum force threshold (optional), computes SOAP descriptors, and performs Farthest Point Sampling (FPS) to select a diverse subset.
 5. Submission (submit): Prepares and submits the selected structures for calculation (currently supports CP2K).
 
-🛠️ Basic Usage
+🛠️ Basic Usage\
 Run the main script and pass the desired subcommand along with the path to your configuration JSON file:
 
 ```Bash
@@ -46,7 +46,7 @@ python path/to/main.py <command> path/to/parameter.json
 
 Available commands: gen, perturb, opt, select, submit.
 
-⚙️ Configuration (parameter.json)
+⚙️ Configuration (parameter.json)\
 The entire workflow is driven by a single JSON configuration file. Keys preceded by an underscore (like _input_path) are ignored by the parser, acting effectively as comments or disabled settings.
 
 Here is a full example configuration:
@@ -149,25 +149,26 @@ Here is a full example configuration:
 }
 ```
 
-🧩 Customizing Your Workflow (Running Standalone Steps)
+🧩 Customizing Your Workflow (Running Standalone Steps)\
 You do not have to run the entire pipeline from start to finish. You can easily execute individual steps.
 
-1. Executing a Single Step
+1. Executing a Single Step\
    To run just one step (for example, optimization), use its specific command:
    python main.py opt parameter.json
 
-2. Overriding Default Input Paths
+2. Overriding Default Input Paths\
    By default, each module looks for its input in the default output folder of the previous step in the pipeline (e.g., optimization automatically looks for the perturbation directory).
    If you are skipping steps or using external data, you must explicitly define where to find the input files. To do this, remove the underscore from _input_path and _input_filename in your JSON file and point them to your custom directory and file names.
 
-3. Notice for the Selection Step
+3. Notice for the Selection Step\
    If you are running the select command standalone, pay close attention to the max_force_threshold parameter. This value sets the maximum allowable atomic force (e.g., 50.0 eV/Å).
    If an atom in a frame has a force exceeding this threshold, the entire frame is completely rejected before SOAP descriptors or Farthest Point Sampling (FPS) are calculated.
    If you set this value too low on unoptimized, highly perturbed structures, the script may reject every single frame, resulting in a failure where no candidates are available for selection.
    The max_force_parameter acts on info_key "max_force". So if the input trajectories have no "max_force" info_key, please do not set max_force_parameter parameter.
 
-4. Notice for the Submission Step
+4. Notice for the Submission Step\
    At present, the submission step only supports CP2K calculation with input template in a specific format. See template.inp for details.
+
 
 
 
