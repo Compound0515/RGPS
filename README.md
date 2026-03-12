@@ -2,7 +2,7 @@
 
 The RGPS Workflow Tool is a command-line interface designed to automate the pipeline for generating, perturbing, optimizing, selecting, and submitting atomic structures for calculation.
 
-📦 Installation & Setup
+📦 Installation & Setup\n
 Before running the tool, you need to set up a Python virtual environment and install the required dependencies.
 
 1. Open your terminal and navigate to the project directory, then run:
@@ -26,7 +26,7 @@ Before running the tool, you need to set up a Python virtual environment and ins
 
 4. If you need other modules such as mace-torch and les for *MACELES* type model, you can install the module by youself.
 
-🚀 Workflow Overview
+🚀 Workflow Overview\n
 The tool is divided into five sequential subcommands, representing each step in the pipeline. Each step requires a JSON configuration file to run.
 
 The default workflow moves data through the following stages:
@@ -168,6 +168,7 @@ You do not have to run the entire pipeline from start to finish. You can easily 
 
 4. Notice for the Submission Step
    At present, the submission step only supports CP2K calculation with input template in a specific format. See template.inp for details.
+
 
 
 
