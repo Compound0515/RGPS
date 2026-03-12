@@ -51,8 +51,7 @@ The entire workflow is driven by a single JSON configuration file. Keys preceded
 
 Here is a full example configuration:
 
-JSON
-
+```JSON
 {
     "work_dir": "./",
 
@@ -148,6 +147,7 @@ JSON
         "command": "mpirun -np {nproc_single} cp2k.popt -i {modified_name} -o cp2k.out"
     }
 }
+```
 
 🧩 Customizing Your Workflow (Running Standalone Steps)
 You do not have to run the entire pipeline from start to finish. You can easily execute individual steps.
@@ -168,5 +168,6 @@ You do not have to run the entire pipeline from start to finish. You can easily 
 
 4. Notice for the Submission Step
    At present, the submission step only supports CP2K calculation with input template in a specific format. See template.inp for details.
+
 
 
